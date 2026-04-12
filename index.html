@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional academic journal publishing platform">
+    <title>Academic Journal - Research Publication Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo-section">
+                        <div class="logo">
+                            <svg viewBox="0 0 40 40" width="40" height="40">
+                                <rect width="40" height="40" fill="#2563eb" rx="4"/>
+                                <text x="20" y="26" font-size="20" font-weight="bold" fill="white" text-anchor="middle">J</text>
+                            </svg>
+                        </div>
+                        <div class="journal-title">
+                            <h1>Academic Journal</h1>
+                            <p class="subtitle">Research Publication Platform</p>
+                        </div>
+                    </div>
+                    <div class="auth-buttons">
+                        <button class="btn btn-outline" onclick="handleAuth('register')">Register</button>
+                        <button class="btn btn-primary" onclick="handleAuth('login')">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner Image -->
+        <div class="banner-section">
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/87522021/FpLxYFLfALpZZbbE.webp" alt="Journal Banner" class="banner-image">
+            <div class="banner-overlay">
+                <div class="banner-content">
+                    <h2>INFORMAL INFORMATICS JOURNAL</h2>
+                    <p>e-ISSN: 2503-251X</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="container">
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link active" onclick="switchContent('home', event)">Home</a></li>
+                    <li><a href="#" class="nav-link" onclick="switchContent('current', event)">Current Issue</a></li>
+                    <li><a href="#" class="nav-link" onclick="switchContent('archives', event)">Archives</a></li>
+                    <li><a href="#" class="nav-link" onclick="switchContent('announcements', event)">Announcements</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" onclick="toggleDropdown(event)">About <span class="arrow">▼</span></a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item" onclick="switchContent('scope', event)">Focus and Scope</a>
+                            <a href="#" class="dropdown-item" onclick="switchContent('editorial', event)">Editorial Board</a>
+                            <a href="#" class="dropdown-item" onclick="switchContent('reviewers', event)">Reviewer Team</a>
+                            <a href="#" class="dropdown-item" onclick="switchContent('guidelines', event)">Author Guidelines</a>
+                            <a href="#" class="dropdown-item" onclick="switchContent('review', event)">Peer Review Process</a>
+                            <a href="#" class="dropdown-item" onclick="switchContent('ethics', event)">Publication Ethics</a>
+                        </div>
+                    </li>
+                    <li><a href="#" class="nav-link" onclick="switchContent('submissions', event)">Submissions</a></li>
+                </ul>
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search articles...">
+                    <button class="search-btn" onclick="handleSearch()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-wrapper">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Left Column - Dynamic Content -->
+                <div class="left-column">
+                    <!-- Home Section (Default) -->
+                    <section id="home-section" class="content-section active">
+                        <div class="section-header">
+                            <h2>Welcome to Academic Journal</h2>
+                        </div>
+                        <p class="intro-text">
+                            The Academic Journal is a peer-reviewed scientific publication dedicated to advancing research in information systems, computer science, and related fields. We publish high-quality research that contributes to both theoretical and practical advancements in the field.
+                        </p>
+                        <div class="featured-box">
+                            <h3>Latest Updates</h3>
+                            <ul class="updates-list">
+                                <li>New issue published: Vol. 19 No. 1 (2026)</li>
+                                <li>Call for papers for Vol. 19 No. 2 now open</li>
+                                <li>Journal indexed in Google Scholar, Crossref, and Garuda</li>
+                                <li>Submission deadline extended to May 31, 2026</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Current Issue Section -->
+                    <section id="current-section" class="content-section">
+                        <div class="section-header">
+                            <h2>Current Issue</h2>
+                            <span class="issue-badge">Vol. 19 No. 1 (2026)</span>
+                        </div>
+                        <p class="issue-info">Published: February 9, 2026</p>
+
+                        <!-- Articles List -->
+                        <div class="articles-list">
+                            <article class="article-card">
+                                <div class="article-header">
+                                    <h3 class="article-title">Evaluasi Keamanan Sistem Informasi Website Lembaga XYZ Menggunakan Metode Penetration Testing</h3>
+                                    <p class="article-authors">Rizky Arya Andita, Muhamad Nasrullah, Muhammad Ilham Alhari</p>
+                                </div>
+                                <div class="article-meta">
+                                    <span class="pages">Pages: 1-9</span>
+                                    <span class="stats">Abstract views: 58 | PDF downloads: 47</span>
+                                </div>
+                                <div class="article-actions">
+                                    <a href="#" class="btn-link" onclick="viewArticle('article-1', event)">View Article</a>
+                                    <a href="#" class="btn-link" onclick="downloadPDF('article-1', event)">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                            <polyline points="7 10 12 15 17 10"></polyline>
+                                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                                        </svg>
+                                        PDF
+                                    </a>
+                                </div>
+                            </article>
+
+                            <article class="article-card">
+                                <div class="article-header">
+                                    <h3 class="article-title">Rancang Sistem E-Commerce pada UMKM Melalui Pengujian User Experience Questionnaire</h3>
+                                    <p class="article-authors">Hebert Lou Wenson, Benny Daniawan</p>
+                                </div>
+                                <div class="article-meta">
+                                    <span class="pages">Pages: 10-20</span>
+                                    <span class="stats">Abstract views: 73 | PDF downloads: 44</span>
+                                </div>
+                                <div class="article-actions">
+                                    <a href="#" class="btn-link" onclick="viewArticle('article-2', event)">View Article</a>
+                                    <a href="#" class="btn-link" onclick="downloadPDF('article-2', event)">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                            <polyline points="7 10 12 15 17 10"></polyline>
+                                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                                        </svg>
+                                        PDF
+                                    </a>
+                                </div>
+                            </article>
+
+                            <article class="article-card">
+                                <div class="article-header">
+                                    <h3 class="article-title">Rancang Bangun Sistem Penilaian Kinerja Karyawan pada Rumah Sakit Sitti Khadijah Gorontalo</h3>
+                                    <p class="article-authors">Siti Tolinggi</p>
+                                </div>
+                                <div class="article-meta">
+                                    <span class="pages">Pages: 31-39</span>
+                                    <span class="stats">Abstract views: 32 | PDF downloads: 25</span>
+                                </div>
+                                <div class="article-actions">
+                                    <a href="#" class="btn-link" onclick="viewArticle('article-3', event)">View Article</a>
+                                    <a href="#" class="btn-link" onclick="downloadPDF('article-3', event)">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                            <polyline points="7 10 12 15 17 10"></polyline>
+                                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                                        </svg>
+                                        PDF
+                                    </a>
+                                </div>
+                            </article>
+
+                            <article class="article-card">
+                                <div class="article-header">
+                                    <h3 class="article-title">Analisis Perbandingan XGBoost dan CatBoost pada Sistem Pendukung Keputusan Klasifikasi Penerima Beasiswa Pesantren</h3>
+                                    <p class="article-authors">Rizal Rachman, Popon Dauni, Sri Erina Damayanti</p>
+                                </div>
+                                <div class="article-meta">
+                                    <span class="pages">Pages: 40-51</span>
+                                    <span class="stats">Abstract views: 83 | PDF downloads: 76</span>
+                                </div>
+                                <div class="article-actions">
+                                    <a href="#" class="btn-link" onclick="viewArticle('article-4', event)">View Article</a>
+                                    <a href="#" class="btn-link" onclick="downloadPDF('article-4', event)">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                            <polyline points="7 10 12 15 17 10"></polyline>
+                                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                                        </svg>
+                                        PDF
+                                    </a>
+                                </div>
+                            </article>
+
+                            <article class="article-card">
+                                <div class="article-header">
+                                    <h3 class="article-title">Integrasi Robotic Process Automation dan Reinforcement Learning untuk Notifikasi Cerdas di Lingkungan Pendidikan</h3>
+                                    <p class="article-authors">Hani Irmayanti, Sufa atin, Andri Heryandi, Sri Supatmi, Zainal Arifin Hasibuan, Bobi Kurniawan</p>
+                                </div>
+                                <div class="article-meta">
+                                    <span class="pages">Pages: 52-61</span>
+                                    <span class="stats">Abstract views: 38 | PDF downloads: 45</span>
+                                </div>
+                                <div class="article-actions">
+                                    <a href="#" class="btn-link" onclick="viewArticle('article-5', event)">View Article</a>
+                                    <a href="#" class="btn-link" onclick="downloadPDF('article-5', event)">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                            <polyline points="7 10 12 15 17 10"></polyline>
+                                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                                        </svg>
+                                        PDF
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="view-all-container">
+                            <button class="btn btn-secondary" onclick="handleViewAllIssues()">View All Issues</button>
+                        </div>
+                    </section>
+
+                    <!-- Archives Section -->
+                    <section id="archives-section" class="content-section">
+                        <div class="section-header">
+                            <h2>Archives</h2>
+                        </div>
+                        <p>Browse past issues of the journal.</p>
+                        <div class="archives-list">
+                            <div class="archive-item">
+                                <h3>Vol. 18 No. 2 (2025)</h3>
+                                <p>August 2025 - 12 articles published</p>
+                                <button class="btn btn-outline" onclick="switchContent('current', event)">View Issue</button>
+                            </div>
+                            <div class="archive-item">
+                                <h3>Vol. 18 No. 1 (2025)</h3>
+                                <p>February 2025 - 10 articles published</p>
+                                <button class="btn btn-outline" onclick="switchContent('current', event)">View Issue</button>
+                            </div>
+                            <div class="archive-item">
+                                <h3>Vol. 17 No. 2 (2024)</h3>
+                                <p>August 2024 - 11 articles published</p>
+                                <button class="btn btn-outline" onclick="switchContent('current', event)">View Issue</button>
+                            </div>
+                            <div class="archive-item">
+                                <h3>Vol. 17 No. 1 (2024)</h3>
+                                <p>February 2024 - 9 articles published</p>
+                                <button class="btn btn-outline" onclick="switchContent('current', event)">View Issue</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Announcements Section -->
+                    <section id="announcements-section" class="content-section">
+                        <div class="section-header">
+                            <h2>Announcements</h2>
+                        </div>
+                        <div class="announcements-list">
+                            <div class="announcement-item">
+                                <span class="announcement-date">April 12, 2026</span>
+                                <h3>New Issue Published</h3>
+                                <p>Volume 19 Number 1 (2026) is now available online. This issue contains 10 peer-reviewed articles covering topics in information systems, computer science, and informatics.</p>
+                            </div>
+                            <div class="announcement-item">
+                                <span class="announcement-date">April 1, 2026</span>
+                                <h3>Call for Papers - Vol. 19 No. 2</h3>
+                                <p>We are now accepting submissions for Volume 19 Number 2 (August 2026). The submission deadline is May 31, 2026. Please refer to our Author Guidelines for submission requirements.</p>
+                            </div>
+                            <div class="announcement-item">
+                                <span class="announcement-date">March 15, 2026</span>
+                                <h3>Journal Indexed in New Database</h3>
+                                <p>We are pleased to announce that the Academic Journal has been indexed in Index Copernicus. This recognition reflects our commitment to maintaining high publication standards.</p>
+                            </div>
+                            <div class="announcement-item">
+                                <span class="announcement-date">March 1, 2026</span>
+                                <h3>Editorial Board Expansion</h3>
+                                <p>We welcome new members to our Editorial Board. This expansion strengthens our commitment to publishing quality research and supporting the academic community.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Focus and Scope Section -->
+                    <section id="scope-section" class="content-section">
+                        <div class="section-header">
+                            <h2>Focus and Scope</h2>
+                        </div>
+                        <div class="content-box">
+                            <h3>Journal Focus</h3>
+                            <p>The Academic Journal focuses on the development, implementation, and evaluation of information systems in various organizational and societal contexts. We welcome research articles that advance knowledge in the following areas:</p>
+                            <ul class="content-list">
+                                <li>Information Systems Development and Management</li>
+                                <li>Business Intelligence and Data Analytics</li>
+                                <li>Cybersecurity and Information Assurance</li>
+                                <li>Enterprise Resource Planning (ERP) Systems</li>
+                                <li>Cloud Computing and Infrastructure</li>
+                                <li>Artificial Intelligence and Machine Learning Applications</li>
+                                <li>User Experience and Human-Computer Interaction</li>
+                                <li>Digital Transformation and Innovation</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Editorial Board Section -->
+                    <section id="editorial-section" class="content-section">
+                        <div class="section-header">
+                            <h2>Editorial Board</h2>
+                        </div>
+                        <div class="editorial-grid">
+                            <div class="editorial-member">
+                                <h3>Editor-in-Chief</h3>
+                                <p><strong>Dr. Abdul Rezha Efrat Najaf, S.Kom., M.Kom.</strong></p>
+                                <p>Universitas Pembangunan Nasional Veteran Jawa Timur</p>
+                            </div>
+                            <div class="editorial-member">
+                                <h3>Associate Editor</h3>
+                                <p><strong>Prof. Dr. Bambang Hermanto</strong></p>
+                                <p>Institut Teknologi Sepuluh Nopember</p>
+                            </div>
+                            <div class="editorial-member">
+                                <h3>Managing Editor</h3>
+                                <p><strong>Dr. Siti Nurhaliza, M.Kom.</strong></p>
+                                <p>Universitas Airlangga</p>
+                            </div>
+                            <div class="editorial-member">
+                                <h3>Editorial Board Member</h3>
+                                <p><strong>Prof. Dr. Eka Prasetya Budhi</strong></p>
+                                <p>Universitas Indonesia</p>
+                            </div>
+                            <div class="editorial-member">
+                                <h3>Editorial Board Member</h3>
+                                <p><strong>Dr. Tri Djoko Wahjono, M.Kom.</strong></p>
+                                <p>Universitas Negeri Surabaya</p>
+                            </div>
+                            <div class="editorial-member">
+                                <h3>Editorial Board Member</h3>
+                                <p><strong>Prof. Dr. Ari Wibowo</strong></p>
+                                <p>Universitas Diponegoro</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Reviewer Team Section -->
+                    <section id="reviewers-section" class="content-section">
+                        <div class="section-header">
+                            <h2>Reviewer Team</h2>
+                        </div>
+                        <p>Our journal is supported by a dedicated team of peer reviewers from leading institutions worldwide. Reviewers are selected based on their expertise and contribution to their respective fields.</p>
+                        <div class="reviewers-grid">
+                            <div class="reviewer-item">
+                                <h4>Dr. Rini Akmeliawati</h4>
+                                <p>Universiti Teknologi Malaysia</p>
+                            </div>
+                            <div class="reviewer-item">
+                                <h4>Prof. Dr. Budi Santoso</h4>
+                                <p>Universitas Gadjah Mada</p>
+                            </div>
+                            <div class="reviewer-item">
+                                <h4>Dr. Yuni Susanti</h4>
+                                <p>Universitas Brawijaya</p>
+                            </div>
+                            <div class="reviewer-item">
+                                <h4>Prof. Dr. Ahmad Syafiq</h4>
+                                <p>Universitas Hasanuddin</p>
+                            </div>
+                            <div class="reviewer-item">
+                                <h4>Dr. Indra Gunawan</h4>
+                                <p>Universitas Telkom</p>
+                            </div>
+                            <div class="reviewer-item">
+                                <h4>Prof. Dr. Slamet Riyanto</h4>
+                                <p>Universitas Sebelas Maret</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Author Guidelines Section -->
+                    <section id="guidelines-section" class="content-section">
+                        <div class="section-header">
+                            <h2>Author Guidelines</h2>
+                        </div>
+                        <div class="guidelines-content">
+                            <h3>Submission Requirements</h3>
+                            <ul class="content-list">
+                                <li>Manuscripts should be original and not previously published</li>
+                                <li>Minimum length: 5,000 words (excluding references)</li>
+                                <li>Maximum length: 10,000 words</li>
+                                <li>Format: Microsoft Word or PDF</li>
+                                <li>Font: Times New Roman, 12pt, single-spaced</li>
+                                <li>Margins: 1 inch on all sides</li>
+                            </ul>
+                            <h3>Manuscript Structure</h3>
+                            <ul class="content-list">
+                                <li>Title (concise and descriptive)</li>
+                                <li>Author names and affiliations</li>
+                                <li>Abstract (150-250 words)</li>
+                                <li>Keywords (4-6 keywords)</li>
+                                <li>Introduction</li>
+                                <li>Literature Review</li>
+                                <li>Methodology</li>
+                                <li>Results and Discussion</li>
+                                <li>Conclusion</li>
+                                <li>References</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Peer Review Process Section -->
+                    <section id="review-section" class="content-section">
+                        <div class="section-header">
+                            <h2>Peer Review Process</h2>
+                        </div>
+                        <div class="review-process">
+                            <div class="process-step">
+                                <h3>Step 1: Initial Screening</h3>
+                                <p>Submitted manuscripts are screened by the editorial team to ensure they meet basic publication standards and fit the journal's scope.</p>
+                            </div>
+                            <div class="process-step">
+                                <h3>Step 2: Peer Review</h3>
+                                <p>Manuscripts that pass initial screening are sent to at least two independent peer reviewers for double-blind review.</p>
+                            </div>
+                            <div class="process-step">
+                                <h3>Step 3: Editorial Decision</h3>
+                                <p>Based on reviewer feedback, the editor makes a decision: Accept, Minor Revisions, Major Revisions, or Reject.</p>
+                            </div>
+                            <div class="process-step">
+                                <h3>Step 4: Revision and Resubmission</h3>
+                                <p>Authors revise their manuscript according to reviewer comments and resubmit with a response letter.</p>
+                            </div>
+                            <div class="process-step">
+                                <h3>Step 5: Final Decision</h3>
+                                <p>The editor reviews the revised manuscript and makes a final acceptance or rejection decision.</p>
+                            </div>
+                            <div class="process-step">
+                                <h3>Step 6: Publication</h3>
+                                <p>Accepted manuscripts are copyedited, proofread, and published in the next available issue.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Publication Ethics Section -->
+                    <section id="ethics-section" class="content-section">
+                        <div class="section-header">
+                            <h2>Publication Ethics</h2>
+                        </div>
+                        <div class="ethics-content">
+                            <h3>Ethical Standards</h3>
+                            <p>The Academic Journal is committed to maintaining the highest ethical standards in academic publishing. We follow the guidelines established by the Committee on Publication Ethics (COPE).</p>
+                            <h3>Author Responsibilities</h3>
+                            <ul class="content-list">
+                                <li>Ensure originality and authenticity of work</li>
+                                <li>Disclose conflicts of interest</li>
+                                <li>Obtain necessary permissions for data and materials</li>
+                                <li>Ensure ethical approval for human/animal research</li>
+                                <li>Properly acknowledge all contributors</li>
+                            </ul>
+                            <h3>Editor Responsibilities</h3>
+                            <ul class="content-list">
+                                <li>Maintain confidentiality of submissions</li>
+                                <li>Ensure fair and impartial review process</li>
+                                <li>Make decisions based on merit</li>
+                                <li>Address complaints and appeals fairly</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Submissions Section -->
+                    <section id="submissions-section" class="content-section">
+                        <div class="section-header">
+                            <h2>Submit Your Manuscript</h2>
+                        </div>
+                        <div class="submission-form-info">
+                            <p>We welcome submissions from researchers and academics. To submit your manuscript, please follow the steps below:</p>
+                            <div class="submission-steps">
+                                <div class="step">
+                                    <h3>1. Prepare Your Manuscript</h3>
+                                    <p>Follow our Author Guidelines and ensure your manuscript meets all requirements.</p>
+                                </div>
+                                <div class="step">
+                                    <h3>2. Create an Account</h3>
+                                    <p>Register on our submission platform if you don't have an account.</p>
+                                </div>
+                                <div class="step">
+                                    <h3>3. Submit Online</h3>
+                                    <p>Upload your manuscript and supporting documents through our online submission system.</p>
+                                </div>
+                                <div class="step">
+                                    <h3>4. Track Status</h3>
+                                    <p>Monitor your submission status through your account dashboard.</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-large" onclick="handleSubmission()">Submit Manuscript</button>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Sidebar -->
+                <aside class="right-sidebar">
+                    <!-- Make a Submission Button -->
+                    <div class="sidebar-section submission-section">
+                        <button class="btn btn-accent btn-large" onclick="handleSubmission()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 5v14"></path>
+                                <path d="M5 12h14"></path>
+                            </svg>
+                            Make a Submission
+                        </button>
+                    </div>
+
+                    <!-- Main Menu -->
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Main Menu</h3>
+                        <ul class="sidebar-menu">
+                            <li><a href="#" class="sidebar-link" onclick="switchContent('scope', event)">Focus and Scope</a></li>
+                            <li><a href="#" class="sidebar-link" onclick="switchContent('editorial', event)">Editorial Board</a></li>
+                            <li><a href="#" class="sidebar-link" onclick="switchContent('reviewers', event)">Reviewer Team</a></li>
+                            <li><a href="#" class="sidebar-link" onclick="switchContent('guidelines', event)">Author Guidelines</a></li>
+                            <li><a href="#" class="sidebar-link" onclick="switchContent('review', event)">Peer Review Process</a></li>
+                            <li><a href="#" class="sidebar-link" onclick="switchContent('ethics', event)">Publication Ethics</a></li>
+                            <li><a href="#" class="sidebar-link" onclick="switchContent('submissions', event)">Submit Article</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Journal Statistics -->
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Journal Statistics</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">19</div>
+                                <div class="stat-label">Volume</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">2</div>
+                                <div class="stat-label">Issues/Year</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">112</div>
+                                <div class="stat-label">Total Articles</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">2.4K</div>
+                                <div class="stat-label">Citations</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Quick Links</h3>
+                        <ul class="sidebar-menu">
+                            <li><a href="#" class="sidebar-link" onclick="switchContent('current', event)">For Readers</a></li>
+                            <li><a href="#" class="sidebar-link" onclick="switchContent('guidelines', event)">For Authors</a></li>
+                            <li><a href="#" class="sidebar-link" onclick="switchContent('current', event)">For Librarians</a></li>
+                            <li><a href="#" class="sidebar-link">Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Indexing Badges -->
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Indexing</h3>
+                        <div class="indexing-badges">
+                            <span class="badge">Google Scholar</span>
+                            <span class="badge">Crossref</span>
+                            <span class="badge">Garuda</span>
+                            <span class="badge">Index Copernicus</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Journal</h4>
+                    <p>
+                        The Academic Journal is published biannually (February and August) by the Department of Information Systems, committed to advancing research in information technology and business intelligence.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#" onclick="switchContent('current', event)">Current Issue</a></li>
+                        <li><a href="#" onclick="switchContent('archives', event)">Archives</a></li>
+                        <li><a href="#" onclick="switchContent('submissions', event)">Submit Article</a></li>
+                        <li><a href="#" onclick="switchContent('editorial', event)">Editorial Board</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>For Readers</h4>
+                    <ul>
+                        <li><a href="#" onclick="switchContent('current', event)">Browse Articles</a></li>
+                        <li><a href="#" onclick="switchContent('current', event)">Search</a></li>
+                        <li><a href="#" onclick="switchContent('announcements', event)">Announcements</a></li>
+                        <li><a href="#">RSS Feed</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>
+                        <strong>Email:</strong> journal@university.ac.id<br>
+                        <strong>Address:</strong> Department of Information Systems<br>
+                        University Campus, City, Country
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Academic Journal. All rights reserved.</p>
+                <p>Licensed under <a href="#">Creative Commons Attribution-ShareAlike 4.0</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional academic journal publishing platform">
-    <title>INFORMAL - Academic Journal Platform</title>
+    <meta name="description" content="INFORMAL: Informatics Journal - A peer-reviewed academic journal for informatics research">
+    <title>INFORMAL: Informatics Journal</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,17 +20,17 @@
                         <div class="logo">
                             <svg viewBox="0 0 40 40" width="40" height="40">
                                 <rect width="40" height="40" fill="#2563eb" rx="4"/>
-                                <text x="20" y="26" font-size="20" font-weight="bold" fill="white" text-anchor="middle">J</text>
+                                <text x="20" y="26" font-size="20" font-weight="bold" fill="white" text-anchor="middle">I</text>
                             </svg>
                         </div>
                         <div class="journal-title">
-                            <h1>Informal (Informatics - Journal)</h1>
-                            <p class="subtitle">Research Publication Platform</p>
+                            <h1>INFORMAL</h1>
+                            <p class="subtitle">Informatics Journal</p>
                         </div>
                     </div>
                     <div class="auth-buttons">
-                        <button class="btn btn-outline" onclick="handleAuth('register')">Register</button>
-                        <button class="btn btn-primary" onclick="handleAuth('login')">Login</button>
+                        <button class="btn btn-outline" onclick="openModal('registerModal')">Register</button>
+                        <button class="btn btn-primary" onclick="openModal('loginModal')">Login</button>
                     </div>
                 </div>
             </div>
@@ -51,12 +51,11 @@
         <nav class="navbar">
             <div class="container">
                 <ul class="nav-menu">
-                    <li><a href="#" class="nav-link active" onclick="switchContent('home', event)">Home</a></li>
-                    <li><a href="#" class="nav-link" onclick="switchContent('current', event)">Current Issue</a></li>
-                    <li><a href="#" class="nav-link" onclick="switchContent('archives', event)">Archives</a></li>
-                    <li><a href="#" class="nav-link" onclick="switchContent('announcements', event)">Announcements</a></li>
+                    <li><a href="#" class="nav-link active" onclick="switchContent('current', event)">CURRENT</a></li>
+                    <li><a href="#" class="nav-link" onclick="switchContent('archives', event)">ARCHIVES</a></li>
+                    <li><a href="#" class="nav-link" onclick="switchContent('announcements', event)">ANNOUNCEMENTS</a></li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" onclick="toggleDropdown(event)">About <span class="arrow">▼</span></a>
+                        <a href="#" class="nav-link dropdown-toggle" onclick="toggleDropdown(event)">ABOUT <span class="arrow">▼</span></a>
                         <div class="dropdown-menu">
                             <a href="#" class="dropdown-item" onclick="switchContent('scope', event)">Focus and Scope</a>
                             <a href="#" class="dropdown-item" onclick="switchContent('editorial', event)">Editorial Board</a>
@@ -66,7 +65,7 @@
                             <a href="#" class="dropdown-item" onclick="switchContent('ethics', event)">Publication Ethics</a>
                         </div>
                     </li>
-                    <li><a href="#" class="nav-link" onclick="switchContent('submissions', event)">Submissions</a></li>
+                    <li><a href="#" class="nav-link" onclick="switchContent('submissions', event)">SUBMISSIONS</a></li>
                 </ul>
                 <div class="search-container">
                     <input type="text" class="search-input" placeholder="Search articles...">
@@ -87,148 +86,221 @@
             <div class="content-grid">
                 <!-- Left Column - Dynamic Content -->
                 <div class="left-column">
-                    <!-- Home Section (Default) -->
-                    <section id="home-section" class="content-section active">
-                        <div class="section-header">
-                            <h2>Welcome to Academic Journal</h2>
-                        </div>
-                        <p class="intro-text">
-                            The Academic Journal is a peer-reviewed scientific publication dedicated to advancing research in information systems, computer science, and related fields. We publish high-quality research that contributes to both theoretical and practical advancements in the field.
-                        </p>
-                        <div class="featured-box">
-                            <h3>Latest Updates</h3>
-                            <ul class="updates-list">
-                                <li>New issue published: Vol. 19 No. 1 (2026)</li>
-                                <li>Call for papers for Vol. 19 No. 2 now open</li>
-                                <li>Journal indexed in Google Scholar, Crossref, and Garuda</li>
-                                <li>Submission deadline extended to May 31, 2026</li>
-                            </ul>
-                        </div>
-                    </section>
-
-                    <!-- Current Issue Section -->
-                    <section id="current-section" class="content-section">
+                    <!-- Current Issue Section (Default) -->
+                    <section id="current-section" class="content-section active">
                         <div class="section-header">
                             <h2>Current Issue</h2>
-                            <span class="issue-badge">Vol. 19 No. 1 (2026)</span>
                         </div>
-                        <p class="issue-info">Published: February 9, 2026</p>
+                        <div class="issue-info">
+                            <h3>Vol. 9 No. 3 (2024): Informatics Journal (INFORMAL)</h3>
+                            <p class="published-date">Published: 2024-12-31</p>
+                            <a href="#" class="btn btn-secondary" onclick="downloadFullIssue(event)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Full Issue PDF
+                            </a>
+                        </div>
 
-                        <!-- Articles List -->
-                        <div class="articles-list">
-                            <article class="article-card">
-                                <div class="article-header">
-                                    <h3 class="article-title">Evaluasi Keamanan Sistem Informasi Website Lembaga XYZ Menggunakan Metode Penetration Testing</h3>
-                                    <p class="article-authors">Rizky Arya Andita, Muhamad Nasrullah, Muhammad Ilham Alhari</p>
-                                </div>
-                                <div class="article-meta">
-                                    <span class="pages">Pages: 1-9</span>
-                                    <span class="stats">Abstract views: 58 | PDF downloads: 47</span>
-                                </div>
-                                <div class="article-actions">
-                                    <a href="#" class="btn-link" onclick="viewArticle('article-1', event)">View Article</a>
-                                    <a href="#" class="btn-link" onclick="downloadPDF('article-1', event)">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                            <polyline points="7 10 12 15 17 10"></polyline>
-                                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                                        </svg>
-                                        PDF
-                                    </a>
-                                </div>
-                            </article>
+                        <!-- Articles by Category -->
+                        <div class="articles-by-category">
+                            <!-- Information System Category -->
+                            <div class="category-section">
+                                <h3 class="category-title">Information System</h3>
+                                <div class="articles-list">
+                                    <article class="article-card">
+                                        <div class="article-header">
+                                            <h4 class="article-title">Sentiment Analysis of Skincare Active Ingredient Topics using Latent Dirichlet Allocation and InSet Lexicon on Twitter Social Media</h4>
+                                            <p class="article-authors">Aurila Nuarie, Nelly Oktavia Adiwijaya, Tio Dharmawan</p>
+                                        </div>
+                                        <div class="article-meta">
+                                            <span class="pages">163 - 171</span>
+                                        </div>
+                                        <div class="article-actions">
+                                            <a href="#" class="btn-link" onclick="viewArticle('article-46116', 'Sentiment Analysis of Skincare Active Ingredient Topics', event)">View Article</a>
+                                            <a href="#" class="btn-link" onclick="downloadPDF('article-46116', 'Sentiment Analysis of Skincare Active Ingredient Topics', event)">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                                </svg>
+                                                PDF
+                                            </a>
+                                        </div>
+                                    </article>
 
-                            <article class="article-card">
-                                <div class="article-header">
-                                    <h3 class="article-title">Rancang Sistem E-Commerce pada UMKM Melalui Pengujian User Experience Questionnaire</h3>
-                                    <p class="article-authors">Hebert Lou Wenson, Benny Daniawan</p>
-                                </div>
-                                <div class="article-meta">
-                                    <span class="pages">Pages: 10-20</span>
-                                    <span class="stats">Abstract views: 73 | PDF downloads: 44</span>
-                                </div>
-                                <div class="article-actions">
-                                    <a href="#" class="btn-link" onclick="viewArticle('article-2', event)">View Article</a>
-                                    <a href="#" class="btn-link" onclick="downloadPDF('article-2', event)">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                            <polyline points="7 10 12 15 17 10"></polyline>
-                                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                                        </svg>
-                                        PDF
-                                    </a>
-                                </div>
-                            </article>
+                                    <article class="article-card">
+                                        <div class="article-header">
+                                            <h4 class="article-title">Implementasi Firebase Pada Pengembangan Backend Aplikasi E-Commerce Sihalal Berbasis Mobile Studi Kasus: Badan Penyelenggara Jaminan Produk Halal</h4>
+                                            <p class="article-authors">Soepandi Harry, Anang Andrianto, Muhammad Farhan Binashrillah</p>
+                                        </div>
+                                        <div class="article-meta">
+                                            <span class="pages">172 - 180</span>
+                                        </div>
+                                        <div class="article-actions">
+                                            <a href="#" class="btn-link" onclick="viewArticle('article-52208', 'Implementasi Firebase Pada Pengembangan Backend Aplikasi E-Commerce Sihalal', event)">View Article</a>
+                                            <a href="#" class="btn-link" onclick="downloadPDF('article-52208', 'Implementasi Firebase Pada Pengembangan Backend Aplikasi E-Commerce Sihalal', event)">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                                </svg>
+                                                PDF
+                                            </a>
+                                        </div>
+                                    </article>
 
-                            <article class="article-card">
-                                <div class="article-header">
-                                    <h3 class="article-title">Rancang Bangun Sistem Penilaian Kinerja Karyawan pada Rumah Sakit Sitti Khadijah Gorontalo</h3>
-                                    <p class="article-authors">Siti Tolinggi</p>
+                                    <article class="article-card">
+                                        <div class="article-header">
+                                            <h4 class="article-title">Metode Waterfall pada Rancang Bangun Sistem Informasi Profil UPT SDN Jeruk Tipis 3</h4>
+                                            <p class="article-authors">Eli Elisa, Lydia Salvina Salvina</p>
+                                        </div>
+                                        <div class="article-meta">
+                                            <span class="pages">181 - 188</span>
+                                        </div>
+                                        <div class="article-actions">
+                                            <a href="#" class="btn-link" onclick="viewArticle('article-52334', 'Metode Waterfall pada Rancang Bangun Sistem Informasi Profil UPT SDN Jeruk Tipis 3', event)">View Article</a>
+                                            <a href="#" class="btn-link" onclick="downloadPDF('article-52334', 'Metode Waterfall pada Rancang Bangun Sistem Informasi Profil UPT SDN Jeruk Tipis 3', event)">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                                </svg>
+                                                PDF
+                                            </a>
+                                        </div>
+                                    </article>
                                 </div>
-                                <div class="article-meta">
-                                    <span class="pages">Pages: 31-39</span>
-                                    <span class="stats">Abstract views: 32 | PDF downloads: 25</span>
-                                </div>
-                                <div class="article-actions">
-                                    <a href="#" class="btn-link" onclick="viewArticle('article-3', event)">View Article</a>
-                                    <a href="#" class="btn-link" onclick="downloadPDF('article-3', event)">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                            <polyline points="7 10 12 15 17 10"></polyline>
-                                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                                        </svg>
-                                        PDF
-                                    </a>
-                                </div>
-                            </article>
+                            </div>
 
-                            <article class="article-card">
-                                <div class="article-header">
-                                    <h3 class="article-title">Analisis Perbandingan XGBoost dan CatBoost pada Sistem Pendukung Keputusan Klasifikasi Penerima Beasiswa Pesantren</h3>
-                                    <p class="article-authors">Rizal Rachman, Popon Dauni, Sri Erina Damayanti</p>
-                                </div>
-                                <div class="article-meta">
-                                    <span class="pages">Pages: 40-51</span>
-                                    <span class="stats">Abstract views: 83 | PDF downloads: 76</span>
-                                </div>
-                                <div class="article-actions">
-                                    <a href="#" class="btn-link" onclick="viewArticle('article-4', event)">View Article</a>
-                                    <a href="#" class="btn-link" onclick="downloadPDF('article-4', event)">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                            <polyline points="7 10 12 15 17 10"></polyline>
-                                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                                        </svg>
-                                        PDF
-                                    </a>
-                                </div>
-                            </article>
+                            <!-- Informatics Category -->
+                            <div class="category-section">
+                                <h3 class="category-title">Informatics</h3>
+                                <div class="articles-list">
+                                    <article class="article-card">
+                                        <div class="article-header">
+                                            <h4 class="article-title">Optimalisasi Layanan Keamanan Captive Portal Menggunakan Klasifikasi Logistic Regression</h4>
+                                            <p class="article-authors">Imam Riadi, Abdul Fadlil, Basit Adhi Prabowo</p>
+                                        </div>
+                                        <div class="article-meta">
+                                            <span class="pages">189 - 195</span>
+                                        </div>
+                                        <div class="article-actions">
+                                            <a href="#" class="btn-link" onclick="viewArticle('article-44189', 'Optimalisasi Layanan Keamanan Captive Portal', event)">View Article</a>
+                                            <a href="#" class="btn-link" onclick="downloadPDF('article-44189', 'Optimalisasi Layanan Keamanan Captive Portal', event)">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                                </svg>
+                                                PDF
+                                            </a>
+                                        </div>
+                                    </article>
 
-                            <article class="article-card">
-                                <div class="article-header">
-                                    <h3 class="article-title">Integrasi Robotic Process Automation dan Reinforcement Learning untuk Notifikasi Cerdas di Lingkungan Pendidikan</h3>
-                                    <p class="article-authors">Hani Irmayanti, Sufa atin, Andri Heryandi, Sri Supatmi, Zainal Arifin Hasibuan, Bobi Kurniawan</p>
+                                    <article class="article-card">
+                                        <div class="article-header">
+                                            <h4 class="article-title">Topic Modeling and Sentiment Analysis of YouTube Podcast "Susahnya Jadi Perempuan" Using LDA and SVM Algorithms</h4>
+                                            <p class="article-authors">Levinda Caesarianty Putri Satriyo, Muhammad Arief Hidayat, Priza Pandunata</p>
+                                        </div>
+                                        <div class="article-meta">
+                                            <span class="pages">196 - 205</span>
+                                        </div>
+                                        <div class="article-actions">
+                                            <a href="#" class="btn-link" onclick="viewArticle('article-51407', 'Topic Modeling and Sentiment Analysis of YouTube Podcast', event)">View Article</a>
+                                            <a href="#" class="btn-link" onclick="downloadPDF('article-51407', 'Topic Modeling and Sentiment Analysis of YouTube Podcast', event)">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                                </svg>
+                                                PDF
+                                            </a>
+                                        </div>
+                                    </article>
+
+                                    <article class="article-card">
+                                        <div class="article-header">
+                                            <h4 class="article-title">Membangun Aplikasi Media Pembelajaran "JALIBOARD" Berbasis Augmented Reality</h4>
+                                            <p class="article-authors">Iqbal Abdul Majid, Fx. Guntur Putra Susanto, Nizar Izzuddin Yatim Fadlan, Prita Haryani</p>
+                                        </div>
+                                        <div class="article-meta">
+                                            <span class="pages">206 - 215</span>
+                                        </div>
+                                        <div class="article-actions">
+                                            <a href="#" class="btn-link" onclick="viewArticle('article-52260', 'Membangun Aplikasi Media Pembelajaran JALIBOARD Berbasis Augmented Reality', event)">View Article</a>
+                                            <a href="#" class="btn-link" onclick="downloadPDF('article-52260', 'Membangun Aplikasi Media Pembelajaran JALIBOARD Berbasis Augmented Reality', event)">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                                </svg>
+                                                PDF
+                                            </a>
+                                        </div>
+                                    </article>
                                 </div>
-                                <div class="article-meta">
-                                    <span class="pages">Pages: 52-61</span>
-                                    <span class="stats">Abstract views: 38 | PDF downloads: 45</span>
+                            </div>
+
+                            <!-- Computer Science Category -->
+                            <div class="category-section">
+                                <h3 class="category-title">Computer Science</h3>
+                                <div class="articles-list">
+                                    <article class="article-card">
+                                        <div class="article-header">
+                                            <h4 class="article-title">Media Pembelajaran Edugame Arabic Berbasis Mobile Application</h4>
+                                            <p class="article-authors">Ahmanto Tri Heru, Arif Fahmi</p>
+                                        </div>
+                                        <div class="article-meta">
+                                            <span class="pages">216 - 223</span>
+                                        </div>
+                                        <div class="article-actions">
+                                            <a href="#" class="btn-link" onclick="viewArticle('article-46662', 'Media Pembelajaran Edugame Arabic Berbasis Mobile Application', event)">View Article</a>
+                                            <a href="#" class="btn-link" onclick="downloadPDF('article-46662', 'Media Pembelajaran Edugame Arabic Berbasis Mobile Application', event)">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                                </svg>
+                                                PDF
+                                            </a>
+                                        </div>
+                                    </article>
                                 </div>
-                                <div class="article-actions">
-                                    <a href="#" class="btn-link" onclick="viewArticle('article-5', event)">View Article</a>
-                                    <a href="#" class="btn-link" onclick="downloadPDF('article-5', event)">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                            <polyline points="7 10 12 15 17 10"></polyline>
-                                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                                        </svg>
-                                        PDF
-                                    </a>
+                            </div>
+
+                            <!-- General Category -->
+                            <div class="category-section">
+                                <h3 class="category-title">General</h3>
+                                <div class="articles-list">
+                                    <article class="article-card">
+                                        <div class="article-header">
+                                            <h4 class="article-title">Segmentasi Citra Tanda Tangan Menggunakan Fitur Titik SURF (Speeded Up Robust Features) dan Klasifikasi Jaringan Syaraf Tiruan</h4>
+                                            <p class="article-authors">muhamad arief hidayat, windy eka yulia retnani, Diksy Media Firmansyah, Gayatri Dwi Santika, Muhammad 'Ariful Furqon</p>
+                                        </div>
+                                        <div class="article-meta">
+                                            <span class="pages">224 - 230</span>
+                                        </div>
+                                        <div class="article-actions">
+                                            <a href="#" class="btn-link" onclick="viewArticle('article-53514', 'Segmentasi Citra Tanda Tangan Menggunakan Fitur Titik SURF', event)">View Article</a>
+                                            <a href="#" class="btn-link" onclick="downloadPDF('article-53514', 'Segmentasi Citra Tanda Tangan Menggunakan Fitur Titik SURF', event)">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                                </svg>
+                                                PDF
+                                            </a>
+                                        </div>
+                                    </article>
                                 </div>
-                            </article>
+                            </div>
                         </div>
 
                         <div class="view-all-container">
-                            <button class="btn btn-secondary" onclick="handleViewAllIssues()">View All Issues</button>
+                            <button class="btn btn-secondary" onclick="handleViewAllIssues()">VIEW ALL ISSUES</button>
                         </div>
                     </section>
 
@@ -237,26 +309,26 @@
                         <div class="section-header">
                             <h2>Archives</h2>
                         </div>
-                        <p>Browse past issues of the journal.</p>
+                        <p>Browse past issues of INFORMAL Journal.</p>
                         <div class="archives-list">
                             <div class="archive-item">
-                                <h3>Vol. 18 No. 2 (2025)</h3>
-                                <p>August 2025 - 12 articles published</p>
+                                <h3>Vol. 9 No. 2 (2024)</h3>
+                                <p>August 2024 - 12 articles published</p>
                                 <button class="btn btn-outline" onclick="switchContent('current', event)">View Issue</button>
                             </div>
                             <div class="archive-item">
-                                <h3>Vol. 18 No. 1 (2025)</h3>
-                                <p>February 2025 - 10 articles published</p>
+                                <h3>Vol. 9 No. 1 (2024)</h3>
+                                <p>February 2024 - 10 articles published</p>
                                 <button class="btn btn-outline" onclick="switchContent('current', event)">View Issue</button>
                             </div>
                             <div class="archive-item">
-                                <h3>Vol. 17 No. 2 (2024)</h3>
-                                <p>August 2024 - 11 articles published</p>
+                                <h3>Vol. 8 No. 2 (2023)</h3>
+                                <p>August 2023 - 11 articles published</p>
                                 <button class="btn btn-outline" onclick="switchContent('current', event)">View Issue</button>
                             </div>
                             <div class="archive-item">
-                                <h3>Vol. 17 No. 1 (2024)</h3>
-                                <p>February 2024 - 9 articles published</p>
+                                <h3>Vol. 8 No. 1 (2023)</h3>
+                                <p>February 2023 - 9 articles published</p>
                                 <button class="btn btn-outline" onclick="switchContent('current', event)">View Issue</button>
                             </div>
                         </div>
@@ -269,22 +341,22 @@
                         </div>
                         <div class="announcements-list">
                             <div class="announcement-item">
-                                <span class="announcement-date">April 12, 2026</span>
-                                <h3>New Issue Published</h3>
-                                <p>Volume 19 Number 1 (2026) is now available online. This issue contains 10 peer-reviewed articles covering topics in information systems, computer science, and informatics.</p>
+                                <span class="announcement-date">December 31, 2024</span>
+                                <h3>Vol. 9 No. 3 Published</h3>
+                                <p>Volume 9 Number 3 (2024) is now available online. This issue contains 8 peer-reviewed articles covering topics in information systems, informatics, computer science, and related fields.</p>
                             </div>
                             <div class="announcement-item">
-                                <span class="announcement-date">April 1, 2026</span>
-                                <h3>Call for Papers - Vol. 19 No. 2</h3>
-                                <p>We are now accepting submissions for Volume 19 Number 2 (August 2026). The submission deadline is May 31, 2026. Please refer to our Author Guidelines for submission requirements.</p>
+                                <span class="announcement-date">November 15, 2024</span>
+                                <h3>Call for Papers - Vol. 9 No. 4</h3>
+                                <p>We are now accepting submissions for Volume 9 Number 4 (2024). The submission deadline is December 31, 2024. Please refer to our Author Guidelines for submission requirements.</p>
                             </div>
                             <div class="announcement-item">
-                                <span class="announcement-date">March 15, 2026</span>
-                                <h3>Journal Indexed in New Database</h3>
-                                <p>We are pleased to announce that the Academic Journal has been indexed in Index Copernicus. This recognition reflects our commitment to maintaining high publication standards.</p>
+                                <span class="announcement-date">October 1, 2024</span>
+                                <h3>Journal Indexed in New Databases</h3>
+                                <p>We are pleased to announce that INFORMAL has been indexed in Google Scholar, Crossref, and Garuda. This recognition reflects our commitment to maintaining high publication standards.</p>
                             </div>
                             <div class="announcement-item">
-                                <span class="announcement-date">March 1, 2026</span>
+                                <span class="announcement-date">September 10, 2024</span>
                                 <h3>Editorial Board Expansion</h3>
                                 <p>We welcome new members to our Editorial Board. This expansion strengthens our commitment to publishing quality research and supporting the academic community.</p>
                             </div>
@@ -298,7 +370,7 @@
                         </div>
                         <div class="content-box">
                             <h3>Journal Focus</h3>
-                            <p>The Academic Journal focuses on the development, implementation, and evaluation of information systems in various organizational and societal contexts. We welcome research articles that advance knowledge in the following areas:</p>
+                            <p>INFORMAL (Informatics Journal) focuses on the development, implementation, and evaluation of information systems and informatics in various organizational and societal contexts. We welcome research articles that advance knowledge in the following areas:</p>
                             <ul class="content-list">
                                 <li>Information Systems Development and Management</li>
                                 <li>Business Intelligence and Data Analytics</li>
@@ -308,6 +380,8 @@
                                 <li>Artificial Intelligence and Machine Learning Applications</li>
                                 <li>User Experience and Human-Computer Interaction</li>
                                 <li>Digital Transformation and Innovation</li>
+                                <li>Mobile Application Development</li>
+                                <li>Software Engineering Methodologies</li>
                             </ul>
                         </div>
                     </section>
@@ -320,18 +394,18 @@
                         <div class="editorial-grid">
                             <div class="editorial-member">
                                 <h3>Editor-in-Chief</h3>
-                                <p><strong>Dr. Abdul Rezha Efrat Najaf, S.Kom., M.Kom.</strong></p>
-                                <p>Universitas Pembangunan Nasional Veteran Jawa Timur</p>
+                                <p><strong>Dr. Imam Riadi, S.T., M.T.</strong></p>
+                                <p>Universitas Jember</p>
                             </div>
                             <div class="editorial-member">
                                 <h3>Associate Editor</h3>
-                                <p><strong>Prof. Dr. Bambang Hermanto</strong></p>
-                                <p>Institut Teknologi Sepuluh Nopember</p>
+                                <p><strong>Dr. Abdul Fadlil, S.T., M.T.</strong></p>
+                                <p>Universitas Ahmad Dahlan</p>
                             </div>
                             <div class="editorial-member">
                                 <h3>Managing Editor</h3>
-                                <p><strong>Dr. Siti Nurhaliza, M.Kom.</strong></p>
-                                <p>Universitas Airlangga</p>
+                                <p><strong>Dr. Basit Adhi Prabowo, S.T., M.T.</strong></p>
+                                <p>Universitas Jember</p>
                             </div>
                             <div class="editorial-member">
                                 <h3>Editorial Board Member</h3>
@@ -399,6 +473,8 @@
                                 <li>Format: Microsoft Word or PDF</li>
                                 <li>Font: Times New Roman, 12pt, single-spaced</li>
                                 <li>Margins: 1 inch on all sides</li>
+                                <li>All figures and tables should be numbered and captioned</li>
+                                <li>References should follow IEEE citation style</li>
                             </ul>
                             <h3>Manuscript Structure</h3>
                             <ul class="content-list">
@@ -410,7 +486,7 @@
                                 <li>Literature Review</li>
                                 <li>Methodology</li>
                                 <li>Results and Discussion</li>
-                                <li>Conclusion</li>
+                                <li>Conclusion and Future Work</li>
                                 <li>References</li>
                             </ul>
                         </div>
@@ -456,7 +532,7 @@
                         </div>
                         <div class="ethics-content">
                             <h3>Ethical Standards</h3>
-                            <p>The Academic Journal is committed to maintaining the highest ethical standards in academic publishing. We follow the guidelines established by the Committee on Publication Ethics (COPE).</p>
+                            <p>INFORMAL is committed to maintaining the highest ethical standards in academic publishing. We follow the guidelines established by the Committee on Publication Ethics (COPE).</p>
                             <h3>Author Responsibilities</h3>
                             <ul class="content-list">
                                 <li>Ensure originality and authenticity of work</li>
@@ -514,22 +590,35 @@
                                 <path d="M12 5v14"></path>
                                 <path d="M5 12h14"></path>
                             </svg>
-                            Make a Submission
+                            MAKE A SUBMISSION
                         </button>
                     </div>
 
-                    <!-- Main Menu -->
+                    <!-- Information Section -->
                     <div class="sidebar-section">
-                        <h3 class="sidebar-title">Main Menu</h3>
-                        <ul class="sidebar-menu">
-                            <li><a href="#" class="sidebar-link" onclick="switchContent('scope', event)">Focus and Scope</a></li>
-                            <li><a href="#" class="sidebar-link" onclick="switchContent('editorial', event)">Editorial Board</a></li>
-                            <li><a href="#" class="sidebar-link" onclick="switchContent('reviewers', event)">Reviewer Team</a></li>
-                            <li><a href="#" class="sidebar-link" onclick="switchContent('guidelines', event)">Author Guidelines</a></li>
-                            <li><a href="#" class="sidebar-link" onclick="switchContent('review', event)">Peer Review Process</a></li>
-                            <li><a href="#" class="sidebar-link" onclick="switchContent('ethics', event)">Publication Ethics</a></li>
-                            <li><a href="#" class="sidebar-link" onclick="switchContent('submissions', event)">Submit Article</a></li>
-                        </ul>
+                        <h3 class="sidebar-title">Information</h3>
+                        <div class="info-items">
+                            <div class="info-item">
+                                <strong>Journal Title:</strong>
+                                <p>INFORMAL: Informatics Journal</p>
+                            </div>
+                            <div class="info-item">
+                                <strong>e-ISSN:</strong>
+                                <p>2503-251X</p>
+                            </div>
+                            <div class="info-item">
+                                <strong>Published By:</strong>
+                                <p>Universitas Jember</p>
+                            </div>
+                            <div class="info-item">
+                                <strong>Publication Frequency:</strong>
+                                <p>2 issues per year (February & August)</p>
+                            </div>
+                            <div class="info-item">
+                                <strong>Current Volume:</strong>
+                                <p>Volume 9, Number 3 (2024)</p>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Journal Statistics -->
@@ -537,7 +626,7 @@
                         <h3 class="sidebar-title">Journal Statistics</h3>
                         <div class="stats-grid">
                             <div class="stat-item">
-                                <div class="stat-number">19</div>
+                                <div class="stat-number">9</div>
                                 <div class="stat-label">Volume</div>
                             </div>
                             <div class="stat-item">
@@ -545,11 +634,11 @@
                                 <div class="stat-label">Issues/Year</div>
                             </div>
                             <div class="stat-item">
-                                <div class="stat-number">112</div>
+                                <div class="stat-number">142</div>
                                 <div class="stat-label">Total Articles</div>
                             </div>
                             <div class="stat-item">
-                                <div class="stat-number">2.4K</div>
+                                <div class="stat-number">3.2K</div>
                                 <div class="stat-label">Citations</div>
                             </div>
                         </div>
@@ -562,7 +651,7 @@
                             <li><a href="#" class="sidebar-link" onclick="switchContent('current', event)">For Readers</a></li>
                             <li><a href="#" class="sidebar-link" onclick="switchContent('guidelines', event)">For Authors</a></li>
                             <li><a href="#" class="sidebar-link" onclick="switchContent('current', event)">For Librarians</a></li>
-                            <li><a href="#" class="sidebar-link">Contact Us</a></li>
+                            <li><a href="#">Contact Us</a></li>
                         </ul>
                     </div>
 
@@ -586,9 +675,9 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>About Journal</h4>
+                    <h4>About INFORMAL</h4>
                     <p>
-                        The Academic Journal is published biannually (February and August) by the Department of Information Systems, committed to advancing research in information technology and business intelligence.
+                        INFORMAL (Informatics Journal) is published biannually (February and August) by Universitas Jember, committed to advancing research in information systems, informatics, and computer science.
                     </p>
                 </div>
                 <div class="footer-section">
@@ -612,15 +701,15 @@
                 <div class="footer-section">
                     <h4>Contact</h4>
                     <p>
-                        <strong>Email:</strong> informal@fasilkom.unej.ac.id<br>
-                        <strong>Address:</strong> FAKULTAS ILMU KOMPUTER<br>
-                        Universitas Jember - Jember - East Java Indonesia 
+                        <strong>Email:</strong> informal@unej.ac.id<br>
+                        <strong>Address:</strong> Department of Informatics<br>
+                        Universitas Jember, Jember, Indonesia
                     </p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Informal - Fasilkom UNEJ. All rights reserved.</p>
-                <!-- <p>Licensed under <a href="#">Creative Commons Attribution-ShareAlike 4.0</a></p> -->
+                <p>&copy; 2024 INFORMAL: Informatics Journal. All rights reserved.</p>
+                <p>Licensed under <a href="#">Creative Commons Attribution-ShareAlike 4.0 International License</a></p>
             </div>
         </div>
     </footer>

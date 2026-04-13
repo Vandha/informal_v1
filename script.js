@@ -420,13 +420,6 @@ function viewArticle(articleId, titleString, event) {
         event.preventDefault();
     }
 
-    // Check if user is logged in
-    if (!currentUser) {
-        showToast('Please login to view articles', 'warning');
-        openModal('loginModal');
-        return;
-    }
-
     // Get article title from the argument or fallback to DOM
     let articleTitle = titleString;
     if (!articleTitle) {
@@ -478,13 +471,6 @@ function downloadPDF(articleId, titleString, event) {
 
     if (event && typeof event.preventDefault === 'function') {
         event.preventDefault();
-    }
-
-    // Check if user is logged in
-    if (!currentUser) {
-        showToast('Please login to download articles', 'warning');
-        openModal('loginModal');
-        return;
     }
 
     // Get article title
@@ -548,12 +534,6 @@ function downloadPDFFile() {
 function downloadFullIssue(event) {
     if (event) {
         event.preventDefault();
-    }
-
-    if (!currentUser) {
-        showToast('Please login to download full issues', 'warning');
-        openModal('loginModal');
-        return;
     }
 
     showToast('Preparing Full Issue PDF...', 'info');

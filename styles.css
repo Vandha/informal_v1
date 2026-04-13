@@ -194,10 +194,12 @@ body {
     top: 0;
     z-index: 50;
     box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
 }
 
 .header-top {
     padding: var(--spacing-lg) 0;
+    transition: all var(--transition-base);
 }
 
 .header-content {
@@ -209,32 +211,96 @@ body {
 .logo-section {
     display: flex;
     align-items: center;
-    gap: var(--spacing-lg);
+    gap: 4px;
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
-    border-radius: 0.5rem;
+    width: 70px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    box-shadow: var(--shadow-md);
     flex-shrink: 0;
+    transition: all var(--transition-base);
+}
+
+.logo svg {
+    transition: all var(--transition-base);
 }
 
 .journal-title h1 {
-    font-size: 1.75rem;
+    font-size: 2.8rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #1e2b5e;
     margin: 0;
+    letter-spacing: 1px;
+    line-height: 1;
+    transition: all var(--transition-base);
+}
+
+.journal-divider {
+    height: 1.5px;
+    background-color: #1e2b5e;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: all var(--transition-base);
 }
 
 .subtitle {
+    font-size: 1.3rem;
+    color: #1e2b5e;
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all var(--transition-base);
+}
+
+/* Collapsed Header Styles */
+.header.collapsed {
+    box-shadow: var(--shadow-md);
+}
+
+.header.collapsed .header-top {
+    padding: var(--spacing-sm) 0;
+}
+
+.header.collapsed .logo {
+    width: 36px;
+    height: 36px;
+}
+
+.header.collapsed .logo svg {
+    width: 26px;
+    height: 26px;
+}
+
+.header.collapsed .journal-title h1 {
+    font-size: 1.5rem;
+}
+
+.header.collapsed .journal-divider {
+    height: 1px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.header.collapsed .subtitle {
+    display: none;
+}
+
+.header.collapsed .banner-section {
+    height: 60px;
+}
+
+.header.collapsed .banner-content h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+}
+
+.header.collapsed .banner-content p {
     font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin: 0.25rem 0 0 0;
+    opacity: 0.8;
 }
 
 .auth-buttons {
@@ -252,6 +318,7 @@ body {
     height: 250px;
     overflow: hidden;
     background-color: var(--surface);
+    transition: all var(--transition-base);
 }
 
 .banner-image {
@@ -283,11 +350,13 @@ body {
     font-weight: 700;
     margin-bottom: var(--spacing-md);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: all var(--transition-base);
 }
 
 .banner-content p {
     font-size: 1.1rem;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transition: all var(--transition-base);
 }
 
 /* ============================================
@@ -365,13 +434,15 @@ body {
     z-index: 100;
 }
 
-.dropdown:hover .dropdown-menu {
+.dropdown:hover .dropdown-menu,
+.dropdown.show .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-.dropdown:hover .arrow {
+.dropdown:hover .arrow,
+.dropdown.show .arrow {
     transform: rotate(180deg);
 }
 

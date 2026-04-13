@@ -280,11 +280,11 @@ function toggleDropdown(event) {
     event.preventDefault();
     const dropdown = event.target.closest('.dropdown');
     if (dropdown) {
+        dropdown.classList.toggle('show');
         const menu = dropdown.querySelector('.dropdown-menu');
         if (menu) {
-            const isVisible = menu.style.visibility === 'visible';
-            menu.style.visibility = isVisible ? 'hidden' : 'visible';
-            menu.style.opacity = isVisible ? '0' : '1';
+            menu.style.opacity = '';
+            menu.style.visibility = '';
         }
     }
 }
@@ -406,10 +406,17 @@ function generateDummyPDF(articleId, articleTitle) {
 /**
  * Preview article PDF
  * @param {string} articleId - Article ID
+ * @param {string} titleString - Article title passed from HTML
  * @param {Event} event - Click event
  */
-function viewArticle(articleId, event) {
-    if (event) {
+function viewArticle(articleId, titleString, event) {
+    // If it's called with only two arguments (old compatibility)
+    if (event === undefined && titleString && typeof titleString.preventDefault === 'function') {
+        event = titleString;
+        titleString = null;
+    }
+
+    if (event && typeof event.preventDefault === 'function') {
         event.preventDefault();
     }
 
@@ -420,9 +427,12 @@ function viewArticle(articleId, event) {
         return;
     }
 
-    // Get article title from the DOM
-    const articleCard = document.querySelector(`[onclick*="viewArticle('${articleId}'"]`)?.closest('.article-card');
-    const articleTitle = articleCard?.querySelector('.article-title')?.textContent || 'Article';
+    // Get article title from the argument or fallback to DOM
+    let articleTitle = titleString;
+    if (!articleTitle) {
+        const articleCard = document.querySelector(`[onclick*="viewArticle('${articleId}'"]`)?.closest('.article-card');
+        articleTitle = articleCard?.querySelector('.article-title')?.textContent || 'Article';
+    }
 
     showToast('Loading article preview...', 'info');
 
@@ -456,10 +466,17 @@ function viewArticle(articleId, event) {
 /**
  * Download PDF file
  * @param {string} articleId - Article ID
+ * @param {string} titleString - Article title passed from HTML 
  * @param {Event} event - Click event
  */
-function downloadPDF(articleId, event) {
-    if (event) {
+function downloadPDF(articleId, titleString, event) {
+    // Handling fallback if only 2 args are passed
+    if (event === undefined && titleString && typeof titleString.preventDefault === 'function') {
+        event = titleString;
+        titleString = null;
+    }
+
+    if (event && typeof event.preventDefault === 'function') {
         event.preventDefault();
     }
 
@@ -470,9 +487,12 @@ function downloadPDF(articleId, event) {
         return;
     }
 
-    // Get article title from the DOM
-    const articleCard = document.querySelector(`[onclick*="downloadPDF('${articleId}'"]`)?.closest('.article-card');
-    const articleTitle = articleCard?.querySelector('.article-title')?.textContent || 'Article';
+    // Get article title
+    let articleTitle = titleString;
+    if (!articleTitle) {
+        const articleCard = document.querySelector(`[onclick*="downloadPDF('${articleId}'"]`)?.closest('.article-card');
+        articleTitle = articleCard?.querySelector('.article-title')?.textContent || 'Article';
+    }
 
     showToast('Preparing PDF download...', 'info');
 
@@ -519,6 +539,28 @@ function downloadPDFFile() {
 
         showToast('PDF downloaded successfully', 'success');
     }, 500);
+}
+
+/**
+ * Download FULL Issue
+ * @param {Event} event - Click event
+ */
+function downloadFullIssue(event) {
+    if (event) {
+        event.preventDefault();
+    }
+
+    if (!currentUser) {
+        showToast('Please login to download full issues', 'warning');
+        openModal('loginModal');
+        return;
+    }
+
+    showToast('Preparing Full Issue PDF...', 'info');
+
+    setTimeout(() => {
+        showToast('Full Issue PDF downloaded successfully', 'success');
+    }, 1500);
 }
 
 /**
@@ -599,26 +641,14 @@ function initializeNavigation() {
 function initializeDropdowns() {
     const dropdowns = document.querySelectorAll('.dropdown');
     
-    dropdowns.forEach(dropdown => {
-        const toggle = dropdown.querySelector('.dropdown-toggle');
-        const menu = dropdown.querySelector('.dropdown-menu');
-        
-        if (toggle && menu) {
-            toggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                menu.style.opacity = menu.style.opacity === '0' ? '1' : '0';
-                menu.style.visibility = menu.style.visibility === 'hidden' ? 'visible' : 'hidden';
-            });
-        }
-    });
-    
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.dropdown')) {
             dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('show');
                 const menu = dropdown.querySelector('.dropdown-menu');
                 if (menu) {
-                    menu.style.opacity = '0';
-                    menu.style.visibility = 'hidden';
+                    menu.style.opacity = '';
+                    menu.style.visibility = '';
                 }
             });
         }
@@ -744,6 +774,23 @@ window.addEventListener('resize', () => {
     handleResponsiveNavigation();
 });
 
+/**
+ * Handle sticky header collapse on scroll
+ */
+function initializeStickyHeader() {
+    const header = document.querySelector('.header');
+    
+    if (!header) return;
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('collapsed');
+        } else {
+            header.classList.remove('collapsed');
+        }
+    });
+}
+
 // ============================================
 // ACCESSIBILITY ENHANCEMENTS
 // ============================================
@@ -816,6 +863,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeSmoothScroll();
     initializeKeyboardNavigation();
     handleResponsiveNavigation();
+    initializeStickyHeader();
     
     // Add search event listeners
     const searchInput = document.querySelector('.search-input');
